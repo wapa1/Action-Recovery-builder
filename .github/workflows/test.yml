@@ -69,6 +69,8 @@ jobs:
       run: |
         PATH=~/bin:$PATH
         mkdir workspace
+        mkdir workspace/device
+        mkdir workspace/device/xiaomi
         mkdir workspace/${{ github.event.inputs.LIBRARY_BRANCH }}
         mkdir workspace/${{ github.event.inputs.DEVICE_PATH }}
         chmod +x workspace
