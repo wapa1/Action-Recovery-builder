@@ -68,7 +68,7 @@ jobs:
     - name: Initialize repo
       run: |
         PATH=~/bin:$PATH
-        mkdir workspace/ ${{ github.event.inputs.DEVICE_BRANCH }} 
+        mkdir workspace
         cd workspace
         echo "::set-output name=pwd::$(pwd)"
         git config --global user.name "Hikaru's Action-Build-Bot"
@@ -86,13 +86,15 @@ jobs:
     - name: Clone device
       run: |
         PATH=~/bin:$PATH
-        cd ${{ steps.pwd.outputs.pwd }}
+        cd workspace
+        #cd ${{ steps.pwd.outputs.pwd }}
         #git clone ${{ github.event.inputs.LIBRARY_URL }} -b ${{ github.event.inputs.LIBRARY_BRANCH }}
-        git clone ${{ github.event.inputs.DEVICE_URL }} -b ${{ github.event.inputs.DEVICE_BRANCH }} ./${{ github.event.inputs.DEVICE_PATH }}
+        git clone ${{ github.event.inputs.DEVICE_URL }} -b ${{ github.event.inputs.DEVICE_PATH }}
     - name: Building
       run: |
         PATH=~/bin:$PATH
-        cd ${{ steps.pwd.outputs.pwd }}
+        cd workspace
+        #cd ${{ steps.pwd.outputs.pwd }}
         export ALLOW_MISSING_DEPENDENCIES=true
         source build/envsetup.sh
         lunch ${{ github.event.inputs.LIBRARY_NAME }}_${{ github.event.inputs.DEVICE_NAME }}-eng 
