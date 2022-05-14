@@ -68,7 +68,7 @@ jobs:
     - name: Initialize repo
       run: |
         PATH=~/bin:$PATH
-        mkdir workspace
+        mkdir workspace/ ${{ github.event.inputs.DEVICE_BRANCH }} 
         cd workspace
         echo "::set-output name=pwd::$(pwd)"
         git config --global user.name "Hikaru's Action-Build-Bot"
