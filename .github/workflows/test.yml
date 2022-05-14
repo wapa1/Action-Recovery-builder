@@ -72,7 +72,7 @@ jobs:
         mkdir workspace/device
         mkdir workspace/device/xiaomi
         mkdir workspace/${{ github.event.inputs.LIBRARY_BRANCH }}
-        mkdir workspace/${{ github.event.inputs.DEVICE_PATH }}
+        #mkdir workspace/${{ github.event.inputs.DEVICE_PATH }}
         chmod +x workspace
         cd workspace
         echo "::set-output name=pwd::$(pwd)"
