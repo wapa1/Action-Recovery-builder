@@ -69,6 +69,7 @@ jobs:
       run: |
         PATH=~/bin:$PATH
         mkdir workspace
+        chmod +x workspace
         cd workspace
         echo "::set-output name=pwd::$(pwd)"
         git config --global user.name "Hikaru's Action-Build-Bot"
