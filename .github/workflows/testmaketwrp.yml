@@ -49,7 +49,7 @@ env:
   DT_LINK: ${{ github.event.inputs.DEVICE_URL }}
   #https://github.com/senpaimaster05/twrp_device_xiaomi_dandelion
   DT_PATH:  ${{ github.event.inputs.DEVICE_PATH }}
-  TARGET: recovery
+  TARGET: recoveryimage
   TZ: Asia/China
 
 jobs:
@@ -90,7 +90,11 @@ jobs:
          run: |
               PATH=/usr/local/bin:$PATH
               cd work
-              . build/envsetup.sh &&lunch twrp_$DEVICE-eng &&export ALLOW_MISSING_DEPENDENCIES=true && mka $TARGET
+              . build/envsetup.sh 
+              lunch twrp_$DEVICE-eng 
+              export ALLOW_MISSING_DEPENDENCIES=true 
+              mka clean
+              mka $TARGET
              
        - name: Release recovery image
          uses: softprops/action-gh-release@v1
