@@ -79,7 +79,14 @@ jobs:
        - name: Sync recovery source and device tree
          run: |
              PATH=/usr/local/bin:$PATH
-             mkdir work
+             mkdir work 
+             mkdir work/device
+             mkdir work/device/xiaomi
+             mkdir work/${{ github.event.inputs.LIBRARY_BRANCH }}
+             mkdir work/${{ github.event.inputs.DEVICE_PATH }}
+             chmod +x work
+             chmod +x work/${{ github.event.inputs.LIBRARY_BRANCH }}
+             chmod +x work/${{ github.event.inputs.DEVICE_PATH }}
              cd work
              #repo init -u $MANIFEST --depth=1
              repo init --depth=1 -u ${{ github.event.inputs.LIBRARY_URL }} -b $MF_PATH
