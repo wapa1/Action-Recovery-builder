@@ -1,6 +1,36 @@
 name: Building recovery
 
 on:
+  workflow_dispatch:
+    inputs:
+      LIBRARY_NAME:
+        description: 'LIBRARY_NAME'
+        required: true
+        default: 'omni'
+      LIBRARY_URL:
+        description: 'LIBRARY_URL'
+        required: true
+        default: 'https://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni'
+      LIBRARY_BRANCH:
+        description: 'LIBRARY_BRANCH'
+        required: true
+        default: 'twrp-9.0'
+      DEVICE_URL:
+        description: 'DEVICE_URL'
+        required: true
+        default: 'https://github.com/shitianshiwa/twrp_device_xiaomi_redmi9a'
+      DEVICE_BRANCH:
+        description: 'DEVICE_BRANCH'
+        required: true
+        default: 'twrp-9.0'
+      DEVICE_PATH:
+        description: 'DEVICE_PATH'
+        required: true
+        default: 'device/xiaomi/dandelion'
+      DEVICE_NAME:
+        description: 'DEVICE_NAME'
+        required: true
+        default: 'dandelion'
 #  release:
 #    types: [published]
 #  push:
@@ -10,7 +40,7 @@ on:
 #      - '.config'
 #  schedule:
 #    - cron: 0 8 * * 5
-  workflow_dispatch:
+
 
 env:
   MANIFEST: https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp
