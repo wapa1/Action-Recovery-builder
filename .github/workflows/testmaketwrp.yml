@@ -74,9 +74,10 @@ jobs:
             sudo -E apt-get -qq install bc build-essential zip curl libstdc++6 git wget python gcc clang libssl-dev repo rsync flex curl  bison aria2
             sudo curl --create-dirs -L -o /usr/local/bin/repo -O -L https://storage.googleapis.com/git-repo-downloads/repo
             sudo chmod a+rx /usr/local/bin/repo
-            
+            export PATH=/usr/local/bin:$PATH
        - name: Sync recovery source and device tree
          run: |
+             PATH=/usr/local/bin:$PATH
              mkdir work
              cd work
              #repo init -u $MANIFEST --depth=1
@@ -87,6 +88,7 @@ jobs:
              
        - name: Build
          run: |
+              PATH=/usr/local/bin:$PATH
               cd work
               . build/envsetup.sh &&lunch twrp_$DEVICE-eng &&export ALLOW_MISSING_DEPENDENCIES=true && mka $TARGET
              
