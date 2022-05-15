@@ -14,7 +14,7 @@ on:
       LIBRARY_BRANCH:
         description: 'LIBRARY_BRANCH'
         required: true
-        default: 'twrp-9.0'
+        default: 'twrp'
       DEVICE_URL:
         description: 'DEVICE_URL'
         required: true
@@ -22,7 +22,7 @@ on:
       DEVICE_BRANCH:
         description: 'DEVICE_BRANCH'
         required: true
-        default: 'twrp-9.0'
+        default: 'twrp'
       DEVICE_PATH:
         description: 'DEVICE_PATH'
         required: true
@@ -81,7 +81,7 @@ jobs:
              mkdir work
              cd work
              #repo init -u $MANIFEST --depth=1
-             repo init --depth=1 -u ${{ github.event.inputs.LIBRARY_URL }} -b ${{ github.event.inputs.LIBRARY_BRANCH }}
+             repo init --depth=1 -u ${{ github.event.inputs.LIBRARY_URL }} -b ${{ github.event.inputs.LIBRARY_BRANCH }}_$DEVICE
              repo sync -c -j4 --force-sync --no-clone-bundle --no-tags
              repo sync -c -j4 --force-sync --no-clone-bundle --no-tags
              git clone --depth=1 $DT_LINK $DT_PATH
