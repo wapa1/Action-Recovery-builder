@@ -43,10 +43,12 @@ on:
 
 
 env:
-  MANIFEST: https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp
-  DEVICE: dandelion
-  DT_LINK: https://github.com/senpaimaster05/twrp_device_xiaomi_dandelion
-  DT_PATH: device/xiaomi/dandelion
+  MANIFEST: ${{ github.event.inputs.LIBRARY_URL }}
+  #https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp
+  DEVICE:   ${{ github.event.inputs.DEVICE_NAME }}
+  DT_LINK: ${{ github.event.inputs.DEVICE_URL }}
+  #https://github.com/senpaimaster05/twrp_device_xiaomi_dandelion
+  DT_PATH:  ${{ github.event.inputs.DEVICE_PATH }}
   TARGET: recovery
   TZ: Asia/China
 
@@ -95,4 +97,4 @@ jobs:
           tag_name: TWRP_11.0
           name: TEST
           files: | 
-            work/out/target/product/rosemary/recovery.img
+            work/out/target/product/ $DEVICE /recovery.img
