@@ -51,6 +51,7 @@ env:
   DT_PATH:  ${{ github.event.inputs.DEVICE_PATH }}
   TARGET: recoveryimage
   TZ: Asia/China
+  MF_PATH: ${{ github.event.inputs.LIBRARY_BRANCH }} _ ${{ github.event.inputs.DEVICE_NAME }}
 
 jobs:
   build:
@@ -81,7 +82,7 @@ jobs:
              mkdir work
              cd work
              #repo init -u $MANIFEST --depth=1
-             repo init --depth=1 -u ${{ github.event.inputs.LIBRARY_URL }} -b ${{ github.event.inputs.LIBRARY_BRANCH }} _$DEVICE
+             repo init --depth=1 -u ${{ github.event.inputs.LIBRARY_URL }} -b $MF_PATH
              repo sync -c -j4 --force-sync --no-clone-bundle --no-tags
              repo sync -c -j4 --force-sync --no-clone-bundle --no-tags
              git clone --depth=1 $DT_LINK $DT_PATH
