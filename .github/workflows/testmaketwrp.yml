@@ -14,7 +14,7 @@ on:
       LIBRARY_BRANCH:
         description: 'LIBRARY_BRANCH'
         required: true
-        default: 'twrp'
+        default: 'twrp-9.0'
       DEVICE_URL:
         description: 'DEVICE_URL'
         required: true
@@ -22,7 +22,7 @@ on:
       DEVICE_BRANCH:
         description: 'DEVICE_BRANCH'
         required: true
-        default: 'twrp'
+        default: 'twrp-9.0'
       DEVICE_PATH:
         description: 'DEVICE_PATH'
         required: true
@@ -51,8 +51,8 @@ env:
   DT_PATH:  ${{ github.event.inputs.DEVICE_PATH }}
   TARGET: recoveryimage
   TZ: Asia/China
-  MF_PATH: ${{ github.event.inputs.LIBRARY_BRANCH }} _ ${{ github.event.inputs.DEVICE_NAME }}
-
+  MF_PATH: ${{ github.event.inputs.LIBRARY_BRANCH }}
+  BRANd: ${{ github.event.inputs.LIBRARY_NAME }}
 jobs:
   build:
     runs-on: ubuntu-18.04
@@ -92,7 +92,7 @@ jobs:
               PATH=/usr/local/bin:$PATH
               cd work
               . build/envsetup.sh 
-              lunch twrp_$DEVICE-eng 
+              lunch $BRANd_$DEVICE-eng 
               export ALLOW_MISSING_DEPENDENCIES=true 
               mka clean
               mka $TARGET
