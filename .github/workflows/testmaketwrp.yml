@@ -99,7 +99,8 @@ jobs:
          run: |
               PATH=/usr/local/bin:$PATH
               cd work
-              . build/envsetup.sh 
+              #. build/envsetup.sh 
+              source build/envsetup.sh
               lunch $BRANd_$DEVICE-eng 
               export ALLOW_MISSING_DEPENDENCIES=true 
               make clean
