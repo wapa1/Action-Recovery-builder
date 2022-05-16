@@ -90,7 +90,7 @@ jobs:
       run: |
         PATH=~/bin:$PATH
         cd ${{ steps.pwd.outputs.pwd }}
-        git clone --depth=1 ${{ github.event.inputs.DEVICE_URL }} -b ${{ github.event.inputs.DEVICE_BRANCH }} ./${{ github.event.inputs.DEVICE_PATH }}
+        git clone --depth=1 ${{ github.event.inputs.DEVICE_URL }} ./${{ github.event.inputs.DEVICE_PATH }}
     - name: Building
       run: |
         PATH=~/bin:$PATH
