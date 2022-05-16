@@ -55,8 +55,8 @@ env:
   BRANd: ${{ github.event.inputs.LIBRARY_NAME }}
 jobs:
   build:
-    #runs-on: ubuntu-18.04
-    runs-on: linux-amd64
+    runs-on: ubuntu-18.04
+    #runs-on: linux-amd64
 
     steps:
        - name: Checkout
