@@ -1,6 +1,4 @@
-
-  
-name: test ini
+name: Make Recovery
 
 on:
   workflow_dispatch:
@@ -12,7 +10,7 @@ on:
       LIBRARY_URL:
         description: 'LIBRARY_URL'
         required: true
-        default: 'https://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni'
+        default: 'git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git'
       LIBRARY_BRANCH:
         description: 'LIBRARY_BRANCH'
         required: true
@@ -20,7 +18,7 @@ on:
       DEVICE_URL:
         description: 'DEVICE_URL'
         required: true
-        default: 'https://github.com/shitianshiwa/twrp_device_xiaomi_redmi9a'
+        default: 'https://github.com/azwhikaru/twrp_device_xiaomi_archytas'
       DEVICE_BRANCH:
         description: 'DEVICE_BRANCH'
         required: true
@@ -28,11 +26,11 @@ on:
       DEVICE_PATH:
         description: 'DEVICE_PATH'
         required: true
-        default: 'device/xiaomi/dandelion'
+        default: 'device/xiaomi/Archytas'
       DEVICE_NAME:
         description: 'DEVICE_NAME'
         required: true
-        default: 'dandelion'
+        default: 'Archytas'
 
 jobs:
   build:
@@ -85,3 +83,27 @@ jobs:
         repo sync -j$(nproc --all) -f --force-sync
         ls -al
       
+    - name: Clone device
+      run: |
+        PATH=~/bin:$PATH
+        cd ${{ steps.pwd.outputs.pwd }}
+        git clone ${{ github.event.inputs.DEVICE_URL }} -b ${{ github.event.inputs.DEVICE_BRANCH }} ./${{ github.event.inputs.DEVICE_PATH }}
+    - name: Building
+      run: |
+        PATH=~/bin:$PATH
+        cd ${{ steps.pwd.outputs.pwd }}
+        export ALLOW_MISSING_DEPENDENCIES=true
+        source build/envsetup.sh
+        lunch ${{ github.event.inputs.LIBRARY_NAME }}_${{ github.event.inputs.DEVICE_NAME }}-eng 
+        make clean
+        make recoveryimage -j$(nproc --all)        
+      
+    - name: Upload to Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: workspace/out/target/product/${{ github.event.inputs.DEVICE_NAME }}/recovery.img
+        name: ${{ github.event.inputs.DEVICE_NAME }}-${{ github.run_id }}
+        tag_name: ${{ github.run_id }}
+        body: Recovery for ${{ github.event.inputs.DEVICE_NAME }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
