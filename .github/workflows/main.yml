@@ -87,5 +87,13 @@ jobs:
           #export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
           #export LC_ALL="C"
           lunch ${BRANd}_${DEVICE}-eng && mka recoveryimage
-
+     - name: Upload to Release
+       uses: softprops/action-gh-release@v1
+       with:
+        files: workspace/out/target/product/${{ github.event.inputs.DEVICE_NAME }}/recovery.img
+        name: ${{ github.event.inputs.DEVICE_NAME }}-${{ github.run_id }}
+        tag_name: ${{ github.run_id }}
+        body: Recovery for ${{ github.event.inputs.DEVICE_NAME }}
+       env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
