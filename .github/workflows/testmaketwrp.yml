@@ -55,7 +55,8 @@ env:
   BRANd: ${{ github.event.inputs.LIBRARY_NAME }}
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    #runs-on: ubuntu-18.04
+    runs-on: linux-amd64
 
     steps:
        - name: Checkout
@@ -64,52 +65,6 @@ jobs:
 
        - name: Initializing environment
          run: |
-            sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d
-            docker rmi `docker images -q`
-            sudo apt-get remove account-plugin-facebook account-plugin-flickr account-plugin-jabber account-plugin-salut account-plugin-twitter account-plugin-windows-live account-plugin-yahoo aisleriot brltty duplicity empathy empathy-common example-content gnome-accessibility-themes gnome-contacts gnome-mahjongg gnome-mines gnome-orca gnome-screensaver gnome-sudoku gnome-video-effects gnomine landscape-common libreoffice-avmedia-backend-gstreamer libreoffice-base-core libreoffice-calc libreoffice-common libreoffice-core libreoffice-draw libreoffice-gnome libreoffice-gtk libreoffice-impress libreoffice-math libreoffice-ogltrans libreoffice-pdfimport libreoffice-style-galaxy libreoffice-style-human libreoffice-writer libsane libsane-common mcp-account-manager-uoa python3-uno rhythmbox rhythmbox-plugins rhythmbox-plugin-zeitgeist sane-utils shotwell shotwell-common telepathy-gabble telepathy-haze telepathy-idle telepathy-indicator telepathy-logger telepathy-mission-control-5 telepathy-salut totem totem-common totem-plugins printer-driver-brlaser printer-driver-foo2zjs printer-driver-foo2zjs-common printer-driver-m2300w printer-driver-ptouch printer-driver-splix
-            #git config --global user.name "mastersenpai05"
-            #git config --global user.email "pampangavergil0405@gmail.com"         
-            git config --global user.name "Hikaru's Action-Build-Bot"
-            git config --global user.email "Android@teio.tk"
-            sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* mysql* php* 
-            sudo -E apt-get clean
-            sudo -E apt-get -qq update
-            sudo -E apt-get -qq install bc build-essential zip curl libstdc++6 git wget python gcc clang libssl-dev repo rsync flex curl  bison aria2
-            sudo apt -y install git-core gnupg flex bison gperf build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev tree lib32z-dev libgl1-mesa-dev libxml2-utils xsltproc unzip jq bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5-dev libsdl1.2-dev libssl-dev libwxgtk3.0-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev imagemagick libbz2-dev libssl-dev lzma ncftp bash-completion python openjdk-8-jdk qemu-user-static
-          
-            sudo curl --create-dirs -L -o /usr/local/bin/repo -O -L https://storage.googleapis.com/git-repo-downloads/repo
-            sudo chmod a+rx /usr/local/bin/repo
-            export PATH=/usr/local/bin:$PATH
-       - name: Sync recovery source and device tree
-         run: |
-             PATH=/usr/local/bin:$PATH
-             mkdir work 
-             mkdir work/device
-             mkdir work/device/xiaomi
-             mkdir work/${{ github.event.inputs.LIBRARY_BRANCH }}
-             mkdir work/${{ github.event.inputs.DEVICE_PATH }}
-             chmod +x work
-             chmod +x work/${{ github.event.inputs.LIBRARY_BRANCH }}
-             chmod +x work/${{ github.event.inputs.DEVICE_PATH }}
-             cd work
-             #repo init -u $MANIFEST --depth=1
-             repo init --depth=1 -u ${{ github.event.inputs.LIBRARY_URL }} -b $MF_PATH
-             repo sync -c -j4 --force-sync --no-clone-bundle --no-tags
-             git clone --depth=1 $DT_LINK $DT_PATH
-             repo sync -c -j4 --force-sync --no-clone-bundle --no-tags
-             ls -al
-             
-             
-       - name: Build
-         run: |
-              PATH=/usr/local/bin:$PATH
-              cd work
-              #. build/envsetup.sh 
-              source build/envsetup.sh
-              lunch $BRANd_$DEVICE-eng 
-              export ALLOW_MISSING_DEPENDENCIES=true 
-              #make clean
-              mka $TARGET
              
        - name: Release recovery image
          uses: softprops/action-gh-release@v1
