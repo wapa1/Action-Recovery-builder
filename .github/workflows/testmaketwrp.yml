@@ -72,7 +72,7 @@ jobs:
               echo " ===+++ Sync OrangeFox +++==="
               mkdir work 
               cd work
-              git clone $MANIFEST $MF_PATH
+              git clone $MANIFEST -b $MF_PATH
               #./get_fox_10.sh ~/fox_10.0
               #cd ~/fox_10.0
               git clone $DT_LINK $DT_PATH
