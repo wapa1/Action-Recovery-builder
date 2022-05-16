@@ -1,3 +1,58 @@
+name: Building recovery
+
+on:
+  workflow_dispatch:
+    inputs:
+      LIBRARY_NAME:
+        description: 'LIBRARY_NAME'
+        required: true
+        default: 'omni'
+      LIBRARY_URL:
+        description: 'LIBRARY_URL'
+        required: true
+        default: 'https://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git'
+      LIBRARY_BRANCH:
+        description: 'LIBRARY_BRANCH'
+        required: true
+        default: 'twrp-9.0'
+      DEVICE_URL:
+        description: 'DEVICE_URL'
+        required: true
+        default: 'https://github.com/shitianshiwa/twrp_device_xiaomi_redmi9a'
+      DEVICE_BRANCH:
+        description: 'DEVICE_BRANCH'
+        required: true
+        default: 'twrp-9.0'
+      DEVICE_PATH:
+        description: 'DEVICE_PATH'
+        required: true
+        default: 'device/xiaomi/dandelion'
+      DEVICE_NAME:
+        description: 'DEVICE_NAME'
+        required: true
+        default: 'dandelion'
+#  release:
+#    types: [published]
+#  push:
+#    branches:
+#      - master
+#    paths:
+#      - '.config'
+#  schedule:
+#    - cron: 0 8 * * 5
+
+
+env:
+  MANIFEST: ${{ github.event.inputs.LIBRARY_URL }}
+  #https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp
+  DEVICE:   ${{ github.event.inputs.DEVICE_NAME }}
+  DT_LINK: ${{ github.event.inputs.DEVICE_URL }}
+  #https://github.com/senpaimaster05/twrp_device_xiaomi_dandelion
+  DT_PATH:  ${{ github.event.inputs.DEVICE_PATH }}
+  TARGET: recoveryimage
+  TZ: Asia/China
+  MF_PATH: ${{ github.event.inputs.LIBRARY_BRANCH }}
+  BRANd: ${{ github.event.inputs.LIBRARY_NAME }}
 kind: pipeline
 type: docker
 name: linux-amd64
@@ -9,12 +64,7 @@ platform:
 steps:
 - name: Start syncing && Compiling
   image: brock5555/recovery
-  commands:
   
-MANIFEST="https://gitlab.com/OrangeFox/sync.git"
-DEVICE=KD7
-DT_LINK="https://github.com/mastersenpai0405/recovery_device_tecno_KD7 -b android-10.0"
-DT_PATH=device/tecno/$DEVICE
 
 echo " ===+++ Setting up Build Environment +++==="
 apt install openssh-server -y
