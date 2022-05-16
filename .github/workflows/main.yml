@@ -61,11 +61,12 @@ jobs:
  build:
   if: github.event.repository.owner.id == github.event.sender.id
   runs-on: linux-amd64
-   steps:
-    - name: Check Out
-      uses: actions/checkout@main
+   
+  steps:
+     - name: Check Out
+       uses: actions/checkout@main
     
-    - name: Start syncing && Compiling
+     - name: Start syncing && Compiling
        run: |
           mkdir work 
           cd work
