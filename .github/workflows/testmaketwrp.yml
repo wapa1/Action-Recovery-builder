@@ -91,11 +91,11 @@ jobs:
              chmod +x work/${{ github.event.inputs.DEVICE_PATH }}
              cd work
              #repo init -u $MANIFEST --depth=1
-             repo init --depth=1 -u ${{ github.event.inputs.LIBRARY_URL }} -b $MF_PATH
+             repo init -u ${{ github.event.inputs.LIBRARY_URL }} -b $MF_PATH
              #repo sync -c -j4 --force-sync --no-clone-bundle --no-tags
              repo sync -c -j4 --force-sync --no-clone-bundle --no-tags
              ls -al
-             git clone --depth=1 $DT_LINK $DT_PATH
+             git clone $DT_LINK $DT_PATH
              
        - name: Build
          run: |
@@ -105,8 +105,8 @@ jobs:
               source build/envsetup.sh
               lunch $BRANd_$DEVICE-eng 
               export ALLOW_MISSING_DEPENDENCIES=true 
-              make clean
-              make $TARGET
+              #make clean
+              mka $TARGET
              
        - name: Release recovery image
          uses: softprops/action-gh-release@v1
