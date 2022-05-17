@@ -94,7 +94,7 @@ jobs:
         export LC_ALL="C"
 
         # or, for the 11.0 (or higher) branch
-        lunch twrp_${{ github.event.inputs.DEVICE_PATH }}-eng && mka recoveryimage        
+        lunch twrp_${{ github.event.inputs.DEVICE_NAME }}-eng && mka recoveryimage        
       
     - name: Upload to Release
       uses: softprops/action-gh-release@v1
