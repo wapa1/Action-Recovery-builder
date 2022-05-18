@@ -61,8 +61,8 @@ jobs:
         export PATH=~/bin:$PATH
         git clone https://github.com/osm0sis/mkbootimg  ~/bin/mkbootimg
         #chmod a+x ~/bin/mkbootimg/Makefile
-        chmod a+x ~/bin/mkbootimg/mkbootimg
-        ~/bin/mkbootimg/mkbootimg
+        chmod a+x ~/bin/mkbootimg/mkbootimg.c
+        ~/bin/mkbootimg/mkbootimg.c
       
     - name: Initialize repo
       run: |
