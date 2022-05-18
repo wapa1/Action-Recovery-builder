@@ -56,7 +56,7 @@ jobs:
         mkdir ~/bin
         curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
         chmod a+x ~/bin/repo
-        curl https://github.com/osm0sis/mkbootimg > 
+        curl https://github.com/osm0sis/mkbootimg > /home/runner/OrangeFox_9/out/host/linux-x86/bin/mkbootimg
         export PATH=~/bin:$PATH
       
     - name: Initialize repo
