@@ -98,6 +98,10 @@ jobs:
     - name: Building
       run: |
         PATH=~/bin:$PATH
+        mkdir ~/OrangeFox_9/out
+        mkdir ~/OrangeFox_9/out/host
+        mkdir ~/OrangeFox_9/out/host/linux-x86
+        mkdir ~/OrangeFox_9/out/host/linux-x86/bin
         cd ~/OrangeFox_9
         source build/envsetup.sh
         export ALLOW_MISSING_DEPENDENCIES=true
