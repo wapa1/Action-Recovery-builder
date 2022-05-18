@@ -49,7 +49,7 @@ jobs:
         #sudo apt install build-essential
         sudo apt install gcc g++ make
         sudo apt install software-properties-common
-        yum -y install gcc
+        
         sudo add-apt-repository ppa:deadsnakes/ppa
         sudo apt install python2.7
         sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
