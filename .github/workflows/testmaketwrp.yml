@@ -92,7 +92,7 @@ jobs:
         PATH=~/bin:$PATH
         cd ~/OrangeFox_9
         git clone ${{ github.event.inputs.DEVICE_URL }} ${{ github.event.inputs.DEVICE_PATH }}
-        curl https://github.com/osm0sis/mkbootimg > /out/host/linux-x86/bin
+        curl https://github.com/osm0sis/mkbootimg > out/host/linux-x86/bin
 
         
     - name: Building
