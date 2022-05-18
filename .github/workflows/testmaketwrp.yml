@@ -46,8 +46,8 @@ jobs:
         # 安装OpenJDK
         sudo apt install openjdk-8-jdk
         # 安装编译套件build-essential。若出错，则请使用以下第二行的命令
-        sudo apt install build-essential
-        #sudo apt install gcc g++ make
+        #sudo apt install build-essential
+        sudo apt install gcc g++ make
         sudo apt install software-properties-common
 
         sudo add-apt-repository ppa:deadsnakes/ppa
