@@ -34,8 +34,20 @@ jobs:
         #sudo apt -y autoclean
         #sudo apt clean
         #sudo  apt-get update --fix-missing
-        sudo apt -y upgrade
-        sudo apt -y install git-core gnupg flex bison gperf build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev tree lib32z-dev libgl1-mesa-dev libxml2-utils xsltproc unzip jq bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5-dev libsdl1.2-dev libssl-dev libwxgtk3.0-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev imagemagick libbz2-dev libssl-dev lzma ncftp bash-completion python openjdk-8-jdk qemu-user-static
+        #sudo apt -y upgrade
+        #sudo apt -y install git-core gnupg flex bison gperf build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev tree lib32z-dev libgl1-mesa-dev libxml2-utils xsltproc unzip jq bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5-dev libsdl1.2-dev libssl-dev libwxgtk3.0-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev imagemagick libbz2-dev libssl-dev lzma ncftp bash-completion python openjdk-8-jdk qemu-user-static
+        # 更新软件源
+        sudo apt update
+        # 安装软件包
+        sudo apt install git-core gnupg flex bison gperf \
+        zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 \
+        lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z-dev ccache \
+        libgl1-mesa-dev libxml2-utils xsltproc unzip
+        # 安装OpenJDK
+        sudo apt install openjdk-8-jdk
+        # 安装编译套件build-essential。若出错，则请使用以下第二行的命令
+        sudo apt install build-essential
+        #sudo apt install gcc g++ make
         sudo apt install software-properties-common
 
         sudo add-apt-repository ppa:deadsnakes/ppa
@@ -59,10 +71,10 @@ jobs:
         #curl https://github.com/osm0sis/mkbootimg > ~/bin/mkbootimg
         #chmod a+x ~/bin/mkbootimg
         export PATH=~/bin:$PATH
-        git clone https://github.com/osm0sis/mkbootimg  ~/bin/mkbootimg
+        #git clone https://github.com/osm0sis/mkbootimg  ~/bin/mkbootimg
         #chmod a+x ~/bin/mkbootimg/Makefile
-        chmod a+x ~/bin/mkbootimg/mkbootimg.c
-        ~/bin/mkbootimg/mkbootimg.c
+        #chmod a+x ~/bin/mkbootimg/mkbootimg.c
+        #~/bin/mkbootimg/mkbootimg.c
       
     - name: Initialize repo
       run: |
@@ -103,10 +115,10 @@ jobs:
     - name: Building
       run: |
         PATH=~/bin:$PATH
-        mkdir ~/OrangeFox_9/out
-        mkdir ~/OrangeFox_9/out/host
-        mkdir ~/OrangeFox_9/out/host/linux-x86
-        mkdir ~/OrangeFox_9/out/host/linux-x86/bin
+        #mkdir ~/OrangeFox_9/out
+        #mkdir ~/OrangeFox_9/out/host
+        #mkdir ~/OrangeFox_9/out/host/linux-x86
+        #mkdir ~/OrangeFox_9/out/host/linux-x86/bin
         cd ~/OrangeFox_9
         source build/envsetup.sh
         export ALLOW_MISSING_DEPENDENCIES=true
@@ -115,7 +127,7 @@ jobs:
 
         # or, for the 11.0 (or higher) branch
         lunch omni_${{ github.event.inputs.DEVICE_NAME }}-eng 
-        curl https://github.com/osm0sis/mkbootimg > ~/OrangeFox_9/out/host/linux-x86/bin/mkbootimg
+        #curl https://github.com/osm0sis/mkbootimg > ~/OrangeFox_9/out/host/linux-x86/bin/mkbootimg
         mka recoveryimage        
       
     - name: Upload to Release
