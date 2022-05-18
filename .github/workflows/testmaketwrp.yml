@@ -92,7 +92,7 @@ jobs:
         PATH=~/bin:$PATH
         cd ~/OrangeFox_9
         git clone ${{ github.event.inputs.DEVICE_URL }} ${{ github.event.inputs.DEVICE_PATH }}
-        curl https://github.com/osm0sis/mkbootimg > out/host/linux-x86/bin
+        
 
         
     - name: Building
@@ -105,7 +105,9 @@ jobs:
         #export LC_ALL="C"
 
         # or, for the 11.0 (or higher) branch
-        lunch omni_${{ github.event.inputs.DEVICE_NAME }}-eng && mka recoveryimage        
+        lunch omni_${{ github.event.inputs.DEVICE_NAME }}-eng 
+        curl https://github.com/osm0sis/mkbootimg > ~/OrangeFox_9/out/host/linux-x86/bin
+        mka recoveryimage        
       
     - name: Upload to Release
       uses: softprops/action-gh-release@v1
