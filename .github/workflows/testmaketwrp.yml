@@ -56,6 +56,7 @@ jobs:
         mkdir ~/bin
         curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
         chmod a+x ~/bin/repo
+        curl https://github.com/osm0sis/mkbootimg > 
         export PATH=~/bin:$PATH
       
     - name: Initialize repo
