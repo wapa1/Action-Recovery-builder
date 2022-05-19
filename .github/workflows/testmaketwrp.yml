@@ -30,7 +30,8 @@ jobs:
         #cd /system/core/mkbootimg/
         #make recoveryimage
         cd /
-        find ~ –name "mkbootimg*" –print
+        mount
+        #find ~ –name "mkbootimg*" –print
         #cd android/system/core
         
         #docker rmi `docker images -q`
