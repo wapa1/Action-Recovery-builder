@@ -28,7 +28,7 @@ jobs:
     - name: Prepare the environment
       run: |
         #cd system/core
-        make
+        make recoveryimage
         #find ~ –name "mkbootimg*" –print
         cd android/system/core
         
