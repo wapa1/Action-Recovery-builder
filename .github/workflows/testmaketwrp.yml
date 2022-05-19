@@ -28,7 +28,8 @@ jobs:
     - name: Prepare the environment
       run: |
         #cd system/core
-        find ~ –name "mkbootimg*" –print
+        make
+        #find ~ –name "mkbootimg*" –print
         cd android/system/core
         
         #docker rmi `docker images -q`
