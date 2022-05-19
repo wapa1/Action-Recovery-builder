@@ -67,7 +67,6 @@ jobs:
     - name: Set variables
       run: |
         echo "::set-output name=date::$(date +%F)"
-        ls -a
         id: var
       
     - name: Install repo
