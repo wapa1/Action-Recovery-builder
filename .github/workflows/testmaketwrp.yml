@@ -85,7 +85,7 @@ jobs:
         #cd android/system/core
         chmod a+x ~/bin/mkbootimg/mkbootimg
         #~/bin/mkbootimg/mkbootimg
-        mkbootimg
+        #mkbootimg
       
     - name: Initialize repo
       run: |
@@ -138,10 +138,10 @@ jobs:
 
         # or, for the 11.0 (or higher) branch
         lunch omni_${{ github.event.inputs.DEVICE_NAME }}-eng 
-        git clone https://github.com/xiaolu/mkbootimg_tools ~/OrangeFox_9/t
+        #git clone https://github.com/xiaolu/mkbootimg_tools ~/OrangeFox_9/t
         #sudo cp ~/OrangeFox_9/t/mkbootimg /system/core/mkbootimg
         sudo rm -f /system/core/mkbootimg/mkbootimg
-        cp \"/home/runner/OrangeFox_9/t/mkbootimg\" \"/system/core/mkbootimg\" 
+        cp ~/bin/mkbootimg/mkbootimg /system/core/mkbootimg
         chmod +x /system/core/mkbootimg/mkbootimg
         mka recoveryimage        
       
