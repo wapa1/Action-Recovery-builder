@@ -27,12 +27,13 @@ jobs:
       
     - name: Prepare the environment
       run: |
-        #cd system/core
+        sudo cd /system/core/mkbootimg
         #make recoveryimage
         #find ~ –name "mkbootimg*" –print
         #cd android/system/core
         
         #docker rmi `docker images -q`
+        sudo rm -f /system/core/mkbootimg/mkbootimg
         sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/sudo apt/sources.list.d /workspace ~/OrangeFox_sync ~/OrangeFox_10 ~/OrangeFox_9
         sudo apt -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* mysql* php*
         sudo apt -y autoremove --purge
