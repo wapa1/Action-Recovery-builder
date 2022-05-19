@@ -28,7 +28,9 @@ jobs:
     - name: Prepare the environment
       run: |
         #cd system/core
-        #cd android/system/core
+        find ~ –name "mkbootimg*" –print
+        cd android/system/core
+        
         #docker rmi `docker images -q`
         sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/sudo apt/sources.list.d /workspace ~/OrangeFox_sync ~/OrangeFox_10 ~/OrangeFox_9
         sudo apt -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* mysql* php*
@@ -75,7 +77,7 @@ jobs:
         export PATH=~/bin:$PATH
         #git clone https://github.com/osm0sis/mkbootimg  ~/bin/mkbootimg
         #chmod a+x ~/bin/mkbootimg/Makefile
-        cd android/system/core
+        #cd android/system/core
         #chmod a+x ~/bin/mkbootimg/mkbootimg.c
         #~/bin/mkbootimg/Makefile mkbootimg
       
