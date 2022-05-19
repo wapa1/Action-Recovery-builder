@@ -28,9 +28,9 @@ jobs:
     - name: Prepare the environment
       run: |
         #cd system/core
-        make recoveryimage
+        #make recoveryimage
         #find ~ –name "mkbootimg*" –print
-        cd android/system/core
+        #cd android/system/core
         
         #docker rmi `docker images -q`
         sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/sudo apt/sources.list.d /workspace ~/OrangeFox_sync ~/OrangeFox_10 ~/OrangeFox_9
@@ -133,7 +133,7 @@ jobs:
 
         # or, for the 11.0 (or higher) branch
         lunch omni_${{ github.event.inputs.DEVICE_NAME }}-eng 
-        #curl https://github.com/osm0sis/mkbootimg > ~/OrangeFox_9/out/host/linux-x86/bin/mkbootimg
+        git clone https://github.com/osm0sis/mkbootimg ~/OrangeFox_9/out/host/linux-x86/bin/mkbootimg
         mka recoveryimage        
       
     - name: Upload to Release
