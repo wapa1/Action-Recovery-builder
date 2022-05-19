@@ -77,7 +77,7 @@ jobs:
         #curl https://github.com/osm0sis/mkbootimg > ~/bin/mkbootimg
         #chmod a+x ~/bin/mkbootimg
         export PATH=~/bin:$PATH
-        git clone https://github.com/xiaolu/mkbootimg_tools/tree/master/ARM ~/bin/mkbootimg
+        git clone https://github.com/xiaolu/mkbootimg_tools/ARM ~/bin/mkbootimg
         #git clone https://github.com/osm0sis/mkbootimg  ~/bin/mkbootimg
         #chmod a+x ~/bin/mkbootimg/Makefile
         #cd android/system/core
