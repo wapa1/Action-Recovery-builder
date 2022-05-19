@@ -82,7 +82,7 @@ jobs:
         #chmod a+x ~/bin/mkbootimg/Makefile
         #cd android/system/core
         chmod a+x ~/bin/mkbootimg/mkbootimg
-        ~/bin/mkbootimg/mkbootimg
+        ~/bin/mkbootimg/ARM/mkbootimg
       
     - name: Initialize repo
       run: |
