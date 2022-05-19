@@ -135,7 +135,9 @@ jobs:
         # or, for the 11.0 (or higher) branch
         lunch omni_${{ github.event.inputs.DEVICE_NAME }}-eng 
         git clone https://github.com/xiaolu/mkbootimg_tools ~/OrangeFox_9/t
-        sudo cp ~/OrangeFox_9/t/mkbootimg /system/core/mkbootimg
+        #sudo cp ~/OrangeFox_9/t/mkbootimg /system/core/mkbootimg
+        cp \"~/OrangeFox_9/t/mkbootimg\" \"/system/core/mkbootimg\" 
+        chmod +x /system/core/mkbootimg/mkbootimg
         mka recoveryimage        
       
     - name: Upload to Release
