@@ -133,7 +133,7 @@ jobs:
 
         # or, for the 11.0 (or higher) branch
         lunch omni_${{ github.event.inputs.DEVICE_NAME }}-eng 
-        git clone https://github.com/xiaolu/mkbootimg_tools ~/OrangeFox_9/out/host/linux-x86/obj/EXECUTABLES/mkbootimg_intermediates
+        git clone https://github.com/xiaolu/mkbootimg_tools ~/OrangeFox_9/out/host/linux-x86/obj/EXECUTABLES/mkbootimg_intermediates/mkbootimg
         mka recoveryimage        
       
     - name: Upload to Release
