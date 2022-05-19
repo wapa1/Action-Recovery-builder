@@ -31,7 +31,7 @@ jobs:
         #make recoveryimage
         #find ~ –name "mkbootimg*" –print
         #cd android/system/core
-        
+        ls -a
         #docker rmi `docker images -q`
         sudo rm -f /system/core/mkbootimg/mkbootimg
         sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/sudo apt/sources.list.d /workspace ~/OrangeFox_sync ~/OrangeFox_10 ~/OrangeFox_9
@@ -86,7 +86,7 @@ jobs:
         chmod a+x ~/bin/mkbootimg/mkbootimg
         #~/bin/mkbootimg/mkbootimg
         #mkbootimg
-        sudo cp ~/bin/mkbootimg/mkbootimg /system/core/mkbootimg/
+        sudo cp -r ~/bin/mkbootimg/ /system/core/mkbootimg/
       
     - name: Initialize repo
       run: |
