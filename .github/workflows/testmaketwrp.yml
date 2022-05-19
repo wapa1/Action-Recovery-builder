@@ -31,7 +31,7 @@ jobs:
         #make recoveryimage
         #find ~ –name "mkbootimg*" –print
         #cd android/system/core
-        ls -a
+        
         #docker rmi `docker images -q`
         sudo rm -f /system/core/mkbootimg/mkbootimg
         sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/sudo apt/sources.list.d /workspace ~/OrangeFox_sync ~/OrangeFox_10 ~/OrangeFox_9
@@ -67,12 +67,15 @@ jobs:
     - name: Set variables
       run: |
         echo "::set-output name=date::$(date +%F)"
-        ls -s
+        ls -a
         id: var
       
     - name: Install repo
       run: |
         cd /
+        mkdir /system
+        mkdir /system/core
+        mkdir /system/core/mkbootimg
         mkdir ~/bin
         curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
         chmod a+x ~/bin/repo
@@ -88,7 +91,7 @@ jobs:
         chmod a+x ~/bin/mkbootimg/mkbootimg
         #~/bin/mkbootimg/mkbootimg
         #mkbootimg
-        sudo cp -r ~/bin/mkbootimg/ /system/core/mkbootimg/
+        sudo cp ~/bin/mkbootimg/mkbootimg /system/core/mkbootimg/mkbootimg
       
     - name: Initialize repo
       run: |
