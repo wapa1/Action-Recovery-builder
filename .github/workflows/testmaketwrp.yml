@@ -67,10 +67,12 @@ jobs:
     - name: Set variables
       run: |
         echo "::set-output name=date::$(date +%F)"
-      id: var
+        ls -s
+        id: var
       
     - name: Install repo
       run: |
+        cd /
         mkdir ~/bin
         curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
         chmod a+x ~/bin/repo
