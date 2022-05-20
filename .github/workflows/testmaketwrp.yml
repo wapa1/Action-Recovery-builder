@@ -16,8 +16,8 @@ on:
         required: true
         default: 'dandelion'
 env:
-  t1: find /dev/block -name system | grep "by-name/system_root" -m 1 2>/dev/null
-  t2: find /dev/block -name system | grep "by-name/system" -m 1 2>/dev/null
+  t1: find /dev/block -name system | grep "by-name/system_root" 
+  t2: find /dev/block -name system | grep "by-name/system" 
 
 jobs:
   build:
