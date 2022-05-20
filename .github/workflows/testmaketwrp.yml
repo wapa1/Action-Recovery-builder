@@ -16,8 +16,8 @@ on:
         required: true
         default: 'dandelion'
 env:
-  t1: find /dev/block -name system | grep "by-name/system_root" 
-  t2: find /dev/block -name system | grep "by-name/system" 
+  t1: sudo find /dev/block -name system | grep "by-name/system_root" 
+  t2: sudo find /dev/block -name system | grep "by-name/system" 
 
 jobs:
   build:
@@ -36,7 +36,7 @@ jobs:
         echo "t1: $t1"
         echo "t2: @$t2"
         mount
-        sudo mount $t2
+        sudo mount system
         #find ~ –name "mkbootimg*" –print
         #cd android/system/core
         
