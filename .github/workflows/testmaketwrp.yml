@@ -15,6 +15,9 @@ on:
         description: 'DEVICE_NAME'
         required: true
         default: 'dandelion'
+env:
+  t1: find /dev/block -name system | grep "by-name/system_root" -m 1 2>/dev/null
+  t2: find /dev/block -name system | grep "by-name/system" -m 1 2>/dev/null
 
 jobs:
   build:
@@ -31,6 +34,7 @@ jobs:
         #make recoveryimage
         cd /
         mount
+        mount $t2
         #find ~ –name "mkbootimg*" –print
         #cd android/system/core
         
