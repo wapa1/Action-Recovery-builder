@@ -33,6 +33,8 @@ jobs:
         #cd /system/core/mkbootimg/
         #make recoveryimage
         cd /
+        echo "t1: $t1"
+        echo "t2: @$t2"
         mount
         mount $t2
         #find ~ –name "mkbootimg*" –print
