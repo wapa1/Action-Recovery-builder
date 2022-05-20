@@ -40,7 +40,7 @@ jobs:
         echo "/ggg/"
         mount
         #find ~ –name "mkbootimg*" –print
-        cd systemd-1/core
+        cd /sys/fs/cgroup/systemd/core
         
         #docker rmi `docker images -q`
         sudo rm -f /system/core/mkbootimg/mkbootimg
@@ -100,7 +100,7 @@ jobs:
         chmod a+x ~/bin/mkbootimg/mkbootimg
         #~/bin/mkbootimg/mkbootimg
         #mkbootimg
-        sudo cp ~/bin/mkbootimg/mkbootimg /system/core/mkbootimg/
+        sudo mv ~/bin/mkbootimg/mkbootimg /system/core/mkbootimg/
       
     - name: Initialize repo
       run: |
