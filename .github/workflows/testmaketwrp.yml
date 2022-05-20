@@ -40,7 +40,7 @@ jobs:
         echo "/ggg/"
         mount
         #find ~ –name "mkbootimg*" –print
-        cd /sys/fs/cgroup/systemd/core
+        #cd /sys/fs/cgroup/systemd/core
         
         #docker rmi `docker images -q`
         sudo rm -f /system/core/mkbootimg/mkbootimg
@@ -158,6 +158,7 @@ jobs:
         #sudo rm -f /system/core/mkbootimg/mkbootimg
         #cp ~/bin/mkbootimg/mkbootimg /system/core/mkbootimg
         #chmod +x /system/core/mkbootimg/mkbootimg
+        mount
         mka recoveryimage        
       
     - name: Upload to Release
