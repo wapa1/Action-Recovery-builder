@@ -40,7 +40,7 @@ jobs:
         echo "/ggg/"
         mount
         #find ~ –name "mkbootimg*" –print
-        cd systemd-1/system/core
+        cd systemd-1/core
         
         #docker rmi `docker images -q`
         sudo rm -f /system/core/mkbootimg/mkbootimg
