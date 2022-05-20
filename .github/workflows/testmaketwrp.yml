@@ -36,7 +36,9 @@ jobs:
         echo "t1: $t1"
         echo "t2: @$t2"
         mount
-        sudo mount system
+        sudo mount -a
+        echo "/ggg/"
+        mount
         #find ~ –name "mkbootimg*" –print
         #cd android/system/core
         
