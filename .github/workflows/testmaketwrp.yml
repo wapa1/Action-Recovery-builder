@@ -100,7 +100,7 @@ jobs:
         chmod a+x ~/bin/mkbootimg/mkbootimg
         #~/bin/mkbootimg/mkbootimg
         #mkbootimg
-        sudo mv ~/bin/mkbootimg/mkbootimg /system/core/mkbootimg/
+        #sudo mv ~/bin/mkbootimg/mkbootimg /system/core/mkbootimg/
       
     - name: Initialize repo
       run: |
