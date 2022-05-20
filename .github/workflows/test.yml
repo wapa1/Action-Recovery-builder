@@ -22,7 +22,7 @@ on:
       DEVICE_BRANCH:
         description: 'DEVICE_BRANCH'
         required: true
-        default: 'twrp-9.0'
+        default: 'android-10.0'
       DEVICE_PATH:
         description: 'DEVICE_PATH'
         required: true
@@ -97,8 +97,8 @@ jobs:
         PATH=~/bin:$PATH
         cd workspace
         #cd ${{ steps.pwd.outputs.pwd }}
-        git clone ${{ github.event.inputs.LIBRARY_URL }} -b ${{ github.event.inputs.LIBRARY_BRANCH }}
-        git clone ${{ github.event.inputs.DEVICE_URL }}  ${{ github.event.inputs.DEVICE_PATH }}
+        #git clone ${{ github.event.inputs.LIBRARY_URL }} -b ${{ github.event.inputs.LIBRARY_BRANCH }}
+        git clone ${{ github.event.inputs.DEVICE_URL }} -b ${{ github.event.inputs.DEVICE_BRANCH }} ./${{ github.event.inputs.DEVICE_PATH }}
         #curl ${{ github.event.inputs.DEVICE_URL }} > ${{ github.event.inputs.DEVICE_PATH }}
     - name: Building
       run: |
