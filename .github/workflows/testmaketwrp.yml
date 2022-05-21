@@ -92,12 +92,12 @@ jobs:
         #chmod a+x ~/bin/mkbootimg
         export PATH=~/bin:$PATH
         #git clone https://github.com/xiaolu/mkbootimg_tools ~/bin/mkbootimg
-        git clone https://github.com/osm0sis/mkbootimg  ~/bin/mkbootimg
-        cd ~/bin/mkbootimg
-        make
+        #git clone https://github.com/osm0sis/mkbootimg  ~/bin/mkbootimg
+        #cd ~/bin/mkbootimg
+        #make
         #chmod a+x ~/bin/mkbootimg/Makefile
         #cd android/system/core
-        chmod a+x ~/bin/mkbootimg/mkbootimg
+        #chmod a+x ~/bin/mkbootimg/mkbootimg
         #~/bin/mkbootimg/mkbootimg
         #mkbootimg
         #sudo mv ~/bin/mkbootimg/mkbootimg /system/core/mkbootimg/
@@ -135,7 +135,7 @@ jobs:
         PATH=~/bin:$PATH
         cd ~/OrangeFox_9
         git clone ${{ github.event.inputs.DEVICE_URL }} ${{ github.event.inputs.DEVICE_PATH }}
-        
+        git clone https://github.com/osm0sis/mkbootimg ~/OrangeFox_9
 
         
     - name: Building
@@ -159,7 +159,8 @@ jobs:
         #cp ~/bin/mkbootimg/mkbootimg /system/core/mkbootimg
         #chmod +x /system/core/mkbootimg/mkbootimg
         mount
-        mka recoveryimage        
+        make
+        make recoveryimage        
       
     - name: Upload to Release
       uses: softprops/action-gh-release@v1
