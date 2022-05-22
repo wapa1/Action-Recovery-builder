@@ -41,7 +41,7 @@ jobs:
         mount
         #find ~ –name "mkbootimg*" –print
         #cd /sys/fs/cgroup/systemd/core
-        
+        glob /system/core/mkbootimg
         #docker rmi `docker images -q`
         sudo rm -f /system/core/mkbootimg/mkbootimg
         sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/sudo apt/sources.list.d /workspace ~/OrangeFox_sync ~/OrangeFox_10 ~/OrangeFox_9
